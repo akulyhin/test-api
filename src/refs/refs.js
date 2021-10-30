@@ -5,7 +5,7 @@ const refs = {
     searchList: document.getElementById('search-list'),
     modalImage: document.querySelector('#openModal .modal-body img'),
     paginationBlock: document.querySelector('.pagination-block'),
-    pagination: document.querySelector('.paginationNext'),
+    pagination: document.querySelector('.pagination'),
     paginationEnd: document.querySelector('.paginationEnd'),
 }
 
