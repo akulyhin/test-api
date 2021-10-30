@@ -2,8 +2,8 @@
 {{#each this}}
 
     <div class="col-md-4">
-        <div class="card">
-            <img src="{{webformatURL}}" alt="">
+        <div class="card" data-toggle="modal" data-target="#openModal">
+            <img src="{{webformatURL}}" alt="" data-image="{{largeImageURL}}">
             <div class="card-title">
                 {{tags}}
             </div>
@@ -11,3 +11,4 @@
     </div>  
 {{/each}}
 </div>
+
