@@ -32,9 +32,19 @@ pixabayApi.fetchRequest().then(data => {
         pageLink.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                console.log(+e.target.getAttribute('data-page'))
-                pixabayApi.fetchPagination(e.target.getAttribute('data-page')).then(data => {
-                    refs.pageContent.innerHTML = pixabayDefault(data.hits);
+                pageLink.forEach(el => {
+                    el.parentElement.classList.remove('active')
+                })
+                e.target.parentElement.classList.add('active');
+                    pixabayApi.fetchPagination(e.target.getAttribute('data-page')).then(data => {
+                        refs.pageContent.innerHTML = pixabayDefault(data.hits);
+
+                        let card = document.querySelectorAll('.card');
+                        card.forEach(el => {
+                            el.addEventListener('click', (e) => {
+                                refs.modalImage.src = e.target.getAttribute('data-image')
+                            })
+                        })
                 })
             })
         })
