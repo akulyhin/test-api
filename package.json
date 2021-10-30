@@ -16,7 +16,7 @@
   "keywords": [],
   "author": "Artem Kulyhin <ak@all-service.in.ua>",
   "license": "MIT",
-  "homepage": "https://github.com/akulyhin/webpack#readme",
+  "homepage": "https://akulyhin.github.io/test-api/",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
@@ -46,6 +46,7 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "handlebars": "^4.7.6",
     "lodash.debounce": "^4.0.8"
