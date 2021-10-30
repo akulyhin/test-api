@@ -11,6 +11,13 @@ const fetchRequest = () => {
     })
 }
 
+const fetchPagination = (page) => {
+    return axios.get(`${baseURL}?lang=ru&page=${page}&key=${apiKey}`).then(res => {
+        console.log(res.data)
+        return res.data
+    })
+}
+
 
 const fetchQuery = (query) => {
     return axios
@@ -24,5 +31,6 @@ const fetchQuery = (query) => {
 
 export default {
     fetchRequest,
-    fetchQuery
+    fetchQuery,
+    fetchPagination
 }

@@ -17,8 +17,36 @@ refs.search.addEventListener('blur', () => {
 })
 
 
+
 pixabayApi.fetchRequest().then(data => {
-    refs.pageContent.innerHTML = pixabayDefault(data.hits)
+    refs.pageContent.innerHTML = pixabayDefault(data.hits);
+
+    if (data.totalHits > 1 && data.totalHits >= 5) {
+        for (let i = 2; i <= 5; i++) {
+            refs.pagination.insertAdjacentHTML('beforebegin', `<li class="page-item"><a class="page-link" data-page="${i}" href="${i}">${i}</a></li>`);
+            console.log(i)        
+        }
+
+        const pageLink = document.querySelectorAll('.page-link');
+
+        pageLink.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log(+e.target.getAttribute('data-page'))
+                pixabayApi.fetchPagination(e.target.getAttribute('data-page')).then(data => {
+                    refs.pageContent.innerHTML = pixabayDefault(data.hits);
+                })
+            })
+        })
+    }
+
+    else if (data.totalHits > 1 && data.totalHits < 5) {
+        for (let i = 2; i <= data.totalHits; i++) {
+            refs.pagination.insertAdjacentHTML('beforebegin', `<li class="page-item"><a class="page-link" href="#">${i}</a></li>`);
+        }
+    }
+
+
     let card = document.querySelectorAll('.card');
     card.forEach(el => {
         el.addEventListener('click', (e) => {
@@ -29,7 +57,7 @@ pixabayApi.fetchRequest().then(data => {
 
 refs.search.addEventListener('input', debounce((e) => {
     pixabayApi.fetchQuery(e.target.value).then(data => {
-        if (e.target.value.length < 5) {
+        if (e.target.value.length < 4) {
             data.hits.forEach(item => {
                 const option = document.createElement('option');
                 option.value = item.tags;
@@ -56,3 +84,6 @@ refs.search.addEventListener('input', debounce((e) => {
 }, 300))
 
 
+function paginationStart(total) {
+
+}
