@@ -6,7 +6,7 @@ const refs = {
     modalImage: document.querySelector('#openModal .modal-body img'),
     paginationBlock: document.querySelector('.pagination-block'),
     pagination: document.querySelector('.pagination'),
-    paginationEnd: document.querySelector('.paginationEnd'),
+    paginationEnd: document.querySelector('.paginationEnd')
 }
 
 export default refs;
